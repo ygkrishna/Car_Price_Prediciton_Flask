@@ -1,5 +1,5 @@
-from flask import Flask, render_template, request
-import jsonify
+from flask import Flask, render_template, request, jsonify
+#import jsonify
 import requests
 import pickle
 import numpy as np
@@ -12,7 +12,7 @@ model = pickle.load(open("rf_reg.pkl", "rb"))
 print('RF Prediction Model Loaded')
 
 @app.route('/',methods=['GET'])
-def Home():
+def home():
     return render_template('index.html')
 
 
@@ -62,4 +62,4 @@ def predict():
         return render_template('index.html')
 
 if __name__=="__main__":
-    app.run(debug=True)
+    app.run(host='0.0.0.0', debug=True)
